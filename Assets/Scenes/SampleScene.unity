@@ -140,6 +140,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7db2cc45daa81154988bb681ecdbd08b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fruitObj:
+  - {fileID: 6469193623463760338, guid: 10e6a51c30938554d9910a67ee3481e9, type: 3}
+  - {fileID: 8108057557515482899, guid: 2007faa031ebd7140a896e655a2584a9, type: 3}
+  - {fileID: 5034082802280660275, guid: 1637d1e243d7f8c449f28744c18972ea, type: 3}
+  - {fileID: 6829787800744653278, guid: f986d8b0bed3fb342be9ed6cbbc7b8f0, type: 3}
+  - {fileID: 4167695487089958485, guid: 7a7e9bc6d69715f47bae66af7d8930d1, type: 3}
+  - {fileID: 8414782075329672820, guid: a1eba1112cf04034bbf5469b04f7571e, type: 3}
+  - {fileID: 1188338174630715518, guid: ec5e1ea8c1edf42429b077b27979530e, type: 3}
+  - {fileID: 8774615814624265789, guid: 1f28e98e54ee02044b35483889ca7d13, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

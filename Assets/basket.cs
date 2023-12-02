@@ -8,16 +8,22 @@ public class basket : MonoBehaviour
     public Transform[] fruitObj;
     static public string spawned = "n";
     static public Vector2 basketpos;
+    static public Vector2 colpos;
+    static public string newfruit = "n";
+    static public int whichfruit = 0;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        Instantiate(fruitObj[UnityEngine.Random.Range(0,3)],transform.position, quaternion.identity);
+        spawned = "y";
     }
 
     // Update is called once per frame
     void Update()
     {   
         spawn();
+        replace();
 
         if (Input.GetKey("a")){
             GetComponent<Rigidbody2D>().velocity = new Vector2(-5,0);            
@@ -41,7 +47,16 @@ public class basket : MonoBehaviour
         }
 
     }
+    void replace(){
 
+        if (newfruit == "y"){
+
+            newfruit = "n";            
+            Instantiate(fruitObj[whichfruit],colpos,quaternion.identity);
+            
+            
+        }
+    }
     IEnumerator spawntimer(){
 
         yield return new WaitForSeconds(.75f);
