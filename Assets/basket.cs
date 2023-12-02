@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
@@ -26,16 +27,29 @@ public class basket : MonoBehaviour
         replace();
 
         if (Input.GetKey("a")){
-            GetComponent<Rigidbody2D>().velocity = new Vector2(-5,0);            
+            GetComponent<Rigidbody2D>().velocity = new Vector2(-5,0); 
+
+            if (transform.position.x < -5.5){
+                GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
+            }          
         }
         if (Input.GetKey("d")){
-            GetComponent<Rigidbody2D>().velocity = new Vector2(5,0);            
+            GetComponent<Rigidbody2D>().velocity = new Vector2(5,0); 
+
+            if (transform.position.x > 5.5){
+                GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);  
+            }         
         }
         if (!Input.GetKey("a") && !Input.GetKey("d")){
             GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);            
         }
 
         basketpos = transform.position;
+
+        if (Input.GetKeyDown("space") && spawned == "y"){
+
+            spawned = "n";
+        }
         
     }
 
@@ -43,7 +57,7 @@ public class basket : MonoBehaviour
 
         if (spawned == "n"){
             StartCoroutine(spawntimer());
-            spawned = "y";
+            spawned = "w";
         }
 
     }
@@ -51,7 +65,10 @@ public class basket : MonoBehaviour
 
         if (newfruit == "y"){
 
-            newfruit = "n";            
+            newfruit = "n";
+            if (whichfruit > 7){
+                whichfruit = 7;
+            }
             Instantiate(fruitObj[whichfruit],colpos,quaternion.identity);
             
             
@@ -61,7 +78,7 @@ public class basket : MonoBehaviour
 
         yield return new WaitForSeconds(.75f);
         Instantiate(fruitObj[UnityEngine.Random.Range(0,3)],transform.position, quaternion.identity);
-        
+        spawned = "y";
         
     }
 }

@@ -8,6 +8,7 @@ public class Fruit : MonoBehaviour
 {
     
     private string inthebasket = "y";
+    private string time = "n";
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +31,8 @@ public class Fruit : MonoBehaviour
 
             GetComponent<Rigidbody2D>().gravityScale = 2;
             inthebasket = "n";
-            basket.spawned = "n";
+            // basket.spawned = "n";
+            StartCoroutine(gameover());
         }
     }
 
@@ -44,6 +46,23 @@ public class Fruit : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void OnTriggerStay2D(Collider2D other){
+
+        if ((other.gameObject.name == "gameover") && (time== "y")){
+        
+        Debug.Log("Game Over");
+
+        }
+    }
+
+    IEnumerator gameover(){
+
+        yield return new WaitForSeconds(0.75f);
+        time="y";
+
+    }
+    
 
     
 }
